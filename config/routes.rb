@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'static_pages#top'
+
+  resources :artists do
+    collection do
+      get :search
+    end
+  end
 end
