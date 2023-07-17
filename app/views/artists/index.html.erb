@@ -6,5 +6,10 @@
     <%= artist.spotify_id %><br>
     <%= artist.artist_name %><br>
     <%= image_tag(artist.artist_image,style: "width: 150px; height: 187px; display: inline-block;") %>
+    <%= link_to artist, method: :get, params: {id: artist.id}, remote: true, class: "flex items-center" do %>
+      <button class="bg-gray-500 text-white py-2 px-4 mx-2">
+        詳細へ
+      </button>
+    <% end %>
   </div>
 <% end %>
