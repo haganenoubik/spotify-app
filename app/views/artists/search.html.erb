@@ -14,6 +14,8 @@
         <%= artist.name %><br>
         <% if artist.images.any? %>
           <%= image_tag(artist.images.first["url"] ,style: "width: 150px; height: 187px; display: inline-block;") %>
+        <% else %>
+          <%= image_tag("no-image.png")%>
         <% end %><br>
       </div>
     <% end %>
