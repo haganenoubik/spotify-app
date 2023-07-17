@@ -65,3 +65,8 @@ group :development do
 end
 
 gem 'cssbundling-rails'
+# For Spotify
+gem 'rspotify'
+
+# Set environment variable
+gem "dotenv-rails"
