@@ -1,0 +1,7 @@
+ <% @artists.each do |artist|%>
+  <div class="m-10 outline break-words p-5 rounded-md">
+    <%= artist.spotify_id %><br>
+    <%= artist.artist_name %><br>
+    <%= image_tag(artist.artist_image,style: "width: 150px; height: 187px; display: inline-block;") %>
+  </div>
+<% end %>

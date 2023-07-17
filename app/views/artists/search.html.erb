@@ -15,8 +15,22 @@
         <% if artist.images.any? %>
           <%= image_tag(artist.images.first["url"] ,style: "width: 150px; height: 187px; display: inline-block;") %>
         <% else %>
-          <%= image_tag("no-image.png")%>
+          <%= image_tag("no-image.png" ,style: "width: 150px; height: 187px; display: inline-block;") %>
         <% end %><br>
+        <div class="mt-5">
+          <% if Artist.exists?(spotify_id: artist.id) %>
+            <span class="rounded borde mr-2 p-1 font-medium text-gray-600  mt-auto sm:m-auto md:mx-auto lg:mx-0 cursor-not-allowed"">登録済</span>
+          <% else %>
+            <div>
+              <%= form_with model: @artist, url: artists_path, local: false, data: { controller: "artists" } do |f| %>
+                <%= f.hidden_field :spotify_id, value: artist.id %>
+                <%= f.hidden_field :artist_name, value: artist.name %>
+                <%= f.hidden_field :artist_image, value: artist&.images&.first&.[]("url") || "no-image.png" %>
+                <%= f.button "登録", class: "rounded border border-gray-600 bg-gray-600 mr-2 p-1 font-medium text-white hover:bg-transparent hover:text-gray-900 focus:outline-none focus:ring active:text-blue-500 mt-auto sm:m-auto md:mx-auto lg:mx-0", data: { disable_with: "送信中..." } %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
