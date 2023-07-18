@@ -10,4 +10,13 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
+    #管理者
+    namespace :admin do
+      resources :artists do
+        collection do
+          get :search
+        end
+      end
+    end
 end

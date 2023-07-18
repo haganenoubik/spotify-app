@@ -1,5 +1,4 @@
-class ArtistsController < ApplicationController
-
+class Admin::ArtistsController < ApplicationController
   def index
     @artists= Artist.all
   end
@@ -17,14 +16,8 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
-    respond_to do |format|
-      if @artist.save
-        format.html { redirect_to artists_path, notice: 'Artist was successfully created.' }
-        format.json { render :show, status: :created, location: @artist }
-      else
-        format.html { render :search }
-        format.json { render json: @artist.errors, status: :unprocessable_entity }
-      end
+    if @artist.save
+      redirect_to admin_artists_path
     end
   end
 
