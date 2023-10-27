@@ -1,4 +1,4 @@
-<div class="m-10 outline break-words p-5 rounded-md">
+<div class="m-10 outline outline-primary break-words p-5 rounded-md">
   <%= @artist.spotify_id %><br>
   <%= @artist.artist_name %><br>
   <%= image_tag(@artist.artist_image,style: "width: 150px; height: 187px; display: inline-block;") %>
@@ -6,7 +6,7 @@
 
 <div class="flex flex-wrap">
   <% @recommended_artists.tracks.each do |track|%>
-    <div class="m-10 outline p-5 rounded-md w-54">
+    <div class="m-10 outline p-5 outline-primary rounded-md w-54">
       <p class="break-words"><%= track.name %></p><br>
       <p><%= track.artists.first.name %></p><br>
       <%= image_tag(track.album.images.first["url"],style: "width: 150px; height: 187px; display: inline-block;") %>
